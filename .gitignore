@@ -1,0 +1,8 @@
+.direnv/
+.venv/
+venv/
+
+.env*
+
+__pycache__/
+*.egg-info/
