@@ -1,6 +1,6 @@
 # SiteFeed
 
-Extracts RSS feed from websites that don't support that.
+Extracts RSS[^1] feed from websites that doesn't support that.
 
 Fully manual operation.
 
@@ -22,3 +22,5 @@ path = "example.xml"                   # path to store Atom feed
 Then start crawling process.
 
 `python -m sitefeed -c config.toml`
+
+[^1]: Atom actually
