@@ -47,7 +47,7 @@ class AtomArticleExporter(BaseItemExporter):
 
         self._newline_and_indent(depth=1)
         self.xg.startElement("updated", {})
-        self.xg.characters(datetime.now(timezone.utc).isoformat(timespec='seconds'))
+        self.xg.characters(datetime.now(timezone.utc).isoformat(timespec="seconds"))
         self.xg.endElement("updated")
 
         self._newline_and_indent(depth=1)

@@ -14,14 +14,16 @@ class Article(Item):
     url = Field()
 
 
-class ArticleLoader:
-    def __init__(self, response: Response):
-        self.response = response
+class ArticleExtractor:
+    restrict_css: str
 
-    def load_item(self) -> Article:
-        document = readability.Document(self.response.text)
+    def __init__(self, *, restrict_css: str | None = None):
+        self.restrict_css = restrict_css or "html"
+
+    def load_item(self, response: Response) -> Article:
+        document = readability.Document(response.css(self.restrict_css).get())
         return Article(
             content=document.summary(html_partial=True),
             title=document.short_title(),
-            url=self.response.url,
+            url=response.url,
         )

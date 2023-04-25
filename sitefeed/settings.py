@@ -58,7 +58,7 @@ TELNETCONSOLE_ENABLED = False
 # Configure item exporters
 # See https://docs.scrapy.org/en/latest/topics/exporters.html
 FEED_EXPORTERS = {
-    'atom': 'sitefeed.exporters.AtomArticleExporter',
+    "atom": "sitefeed.exporters.AtomArticleExporter",
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

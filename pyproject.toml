@@ -1,6 +1,6 @@
 [project]
 name = "sitefeed"
-version = "0.1"
+version = "0.2"
 requires-python = ">=3.11"
 dependencies = [
     "scrapy~=2.8.0",

@@ -7,14 +7,18 @@ from scrapy.crawler import Crawler, CrawlerProcess
 from scrapy.utils.project import get_project_settings
 from scrapy.settings import Settings
 
-from sitefeed.spiders import ArticlesSpider
+from sitefeed.spiders import (
+    ArticlesSpider,
+    ArticleExtractorOptions,
+    LinkExtractorOptions,
+)
 
 
 class FeedSettings(TypedDict):
     start_url: str
-    allow: NotRequired[str | list[str]]
-    restrict_css: NotRequired[str | list[str]]
-    path: str
+    output: str
+    link_extractor: NotRequired[LinkExtractorOptions]
+    article_extractor: NotRequired[ArticleExtractorOptions]
 
 
 class LocalSettings(TypedDict, total=False):
@@ -29,7 +33,7 @@ def derive_feed_settings(
 ) -> Settings:
     settings = default_settings.copy()
     feeds = {
-        feed_settings["path"]: {
+        feed_settings["output"]: {
             "format": "atom",
             "encoding": "utf8",
             "overwrite": True,
@@ -50,7 +54,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
     "-c",
     "--config",
-    type=argparse.FileType(mode='rb'),
+    type=argparse.FileType(mode="rb"),
     required=True,
     help="configuration file path",
 )
@@ -78,8 +82,14 @@ if __name__ == "__main__":
         process.crawl(
             crawler,
             start_url=feed_settings["start_url"],
-            allow=feed_settings.get("allow"),
-            restrict_css=feed_settings.get("restrict_css"),
+            **{
+                f"link_extractor_{key}": value
+                for key, value in feed_settings.get("link_extractor", {}).items()
+            },
+            **{
+                f"article_extractor_{key}": value
+                for key, value in feed_settings.get("article_extractor", {}).items()
+            },
         )
 
     process.start()
