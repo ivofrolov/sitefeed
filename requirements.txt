@@ -124,7 +124,7 @@ python-slugify==8.0.1
     # via spidermon
 queuelib==1.6.2
     # via scrapy
-readability-lxml==0.8.1
+readability-lxml @ git+https://github.com/buriy/python-readability.git
     # via sitefeed (pyproject.toml)
 requests==2.28.2
     # via

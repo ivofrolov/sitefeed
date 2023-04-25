@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 import logging
 
 import readability
@@ -15,13 +16,21 @@ class Article(Item):
 
 
 class ArticleExtractor:
-    restrict_css: str
-
-    def __init__(self, *, restrict_css: str | None = None):
-        self.restrict_css = restrict_css or "html"
+    def __init__(
+        self,
+        *,
+        min_text_length: int = 25,
+        negative_keywords: Iterable[str] | None = None,
+    ):
+        self.min_text_length = min_text_length
+        self.negative_keywords = negative_keywords
 
     def load_item(self, response: Response) -> Article:
-        document = readability.Document(response.css(self.restrict_css).get())
+        document = readability.Document(
+            response.text,
+            min_text_length=self.min_text_length,
+            negative_keywords=self.negative_keywords,
+        )
         return Article(
             content=document.summary(html_partial=True),
             title=document.short_title(),

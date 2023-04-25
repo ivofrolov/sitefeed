@@ -15,7 +15,8 @@ class LinkExtractorOptions(TypedDict, total=False):
 
 
 class ArticleExtractorOptions(TypedDict, total=False):
-    restrict_css: str | None
+    min_text_length: int
+    negative_keywords: list[str]
 
 
 class ArticlesSpider(CrawlSpider):

@@ -12,13 +12,14 @@ Create configuration file in TOML format with fhe followin structure.
 [feed.example]                         # <example> is a feed name
 start_url = "https://www.example.com/" # web page containing links to articles
 link_extractor = {
-    allow = "/articles/",              # regexp that the article links must match (not required)
-    restrict_css = ".links"            # css selector of region where links should be extracted from (not required)
+    allow = "/articles/",              # regexp that article links must match (not required)
+    restrict_css = ".links"            # css selector of a region links should be extracted from (not required)
 }
 article_extractor = {
-    restrict_css = "article"           # css selector of region where article should be extracted from (not required)
+    min_text_length = 25               # higher value leads to more precise detection of longer texts (not required)
+    negative_keywords = ["footer"]     # patterns in classes and ids that decrease content candidates score (not required)
 }
-output = "example.xml"                 # path to store Atom feed
+output = "example.xml"                 # path to store feed
 
 [feed.another]
 # etc.
