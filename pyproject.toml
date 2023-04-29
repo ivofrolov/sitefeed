@@ -1,12 +1,14 @@
 [project]
 name = "sitefeed"
-version = "0.3"
+version = "1.0"
 requires-python = ">=3.11"
 dependencies = [
     "scrapy~=2.8.0",
-    "spidermon[monitoring]~=1.17.1",
-    "readability-lxml @ git+https://github.com/buriy/python-readability.git",
+    "readability-lxml@git+https://github.com/buriy/python-readability.git",
 ]
+
+[project.scripts]
+sitefeed = "sitefeed.entrypoint:crawl"
 
 [build-system]
 requires = ["setuptools", "wheel"]
