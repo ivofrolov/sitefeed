@@ -1,6 +1,5 @@
 from collections.abc import Mapping
-from typing import cast, Any, Type, TypedDict, TypeVar
-
+from typing import Any, Type, TypedDict, TypeVar, cast
 
 Options = TypeVar("Options", bound=TypedDict)
 

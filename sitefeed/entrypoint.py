@@ -1,16 +1,16 @@
 import argparse
 import os
 import tomllib
-from typing import NotRequired, TypedDict, cast
 import urllib.parse
+from typing import NotRequired, TypedDict, cast
 
 from scrapy.crawler import Crawler, CrawlerProcess
-from scrapy.utils.project import get_project_settings
 from scrapy.settings import Settings
+from scrapy.utils.project import get_project_settings
 
 from sitefeed.spiders import (
-    ArticlesSpider,
     ArticleExtractorOptions,
+    ArticlesSpider,
     LinkExtractorOptions,
 )
 

@@ -1,7 +1,7 @@
 from typing import TypedDict
 
-from scrapy.linkextractors import LinkExtractor
 from scrapy.http import Response
+from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from w3lib.url import parse_url
 

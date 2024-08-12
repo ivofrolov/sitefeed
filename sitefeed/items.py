@@ -1,10 +1,9 @@
-from collections.abc import Iterable
 import logging
+from collections.abc import Iterable
 
 import readability
-from scrapy.item import Item, Field
 from scrapy.http import Response
-
+from scrapy.item import Field, Item
 
 logging.getLogger("readability.readability").setLevel(logging.INFO)
 
