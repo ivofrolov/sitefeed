@@ -1,22 +1,16 @@
-.DEFAULT_GOAL := check
+.DEFAULT_GOAL := lint
 
 src = .
 package = sitefeed
 
 .PHONY: format
 format:
-	black $(src)/$(package)
+	ruff format $(src)/$(package)
 
 .PHONY: lint
 lint:
-	ruff check $(src)/$(package)
-
-.PHONY: typecheck
-typecheck:
+	ruff check --output-format pylint $(src)/$(package)
 	pyright $(src)/$(package)
-
-.PHONY: check
-check: lint typecheck
 
 .PHONY: ensure-pip-tools
 ensure-pip-tools:

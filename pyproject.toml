@@ -3,8 +3,8 @@ name = "sitefeed"
 version = "1.0"
 requires-python = ">=3.11"
 dependencies = [
-    "scrapy~=2.8.0",
-    "readability-lxml@git+https://github.com/buriy/python-readability.git",
+  "scrapy~=2.11",
+  "readability-lxml@git+https://github.com/buriy/python-readability.git",
 ]
 
 [project.scripts]
@@ -16,3 +16,13 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 packages = ["sitefeed"]
+
+[tool.pyright]
+disableOrganizeImports = true
+useLibraryCodeForTypes = true
+
+[tool.ruff]
+fix = true
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

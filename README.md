@@ -1,12 +1,8 @@
 # SiteFeed
 
-Extracts RSS[^1] feed from websites that doesn't support that.
+Extracts RSS[^1] feed from websites that don't support it.
 
 Fully manual operation.
-
-## Requirements
-
-Python interpreter version 3.11 or later.
 
 ## Installation
 
