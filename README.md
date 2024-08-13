@@ -2,11 +2,11 @@
 
 Extracts RSS[^1] feed from websites that don't support it.
 
-Fully manual operation.
-
 ## Installation
 
-`pip install sitefeed@git+https://github.com/ivofrolov/sitefeed.git`
+``` shell
+pip install sitefeed@git+https://github.com/ivofrolov/sitefeed.git
+```
 
 ## Usage
 
@@ -32,7 +32,13 @@ output = "example.xml"                 # path to store feed
 And start a crawling process.
 
 ``` shell
-sitefeed -c config.toml -o _site
+sitefeed -c config.toml -o feeds
 ```
+
+## GitHub Action
+
+You can also fork this repository and get your own feeds hosted by
+GitHub pages. The repo contains scheduled action that updates feeds
+every day.
 
 [^1]: Atom actually
