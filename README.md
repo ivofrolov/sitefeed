@@ -29,8 +29,10 @@ output = "example.xml"                 # path to store feed
 # ...
 ```
 
-Then start crawling process.
+And start a crawling process.
 
-`sitefeed -c config.toml`
+``` shell
+sitefeed -c config.toml -o _site
+```
 
 [^1]: Atom actually

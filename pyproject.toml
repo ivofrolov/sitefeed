@@ -5,6 +5,7 @@ requires-python = ">=3.11"
 dependencies = [
   "scrapy~=2.11",
   "readability-lxml@git+https://github.com/buriy/python-readability.git",
+  "lxml_html_clean~=0.2", # via readability-lxml
 ]
 
 [project.scripts]

@@ -1,0 +1,16 @@
+[feed.thonk]
+start_url = "https://www.thonk.co.uk/"
+link_extractor = { allow = "/shop/",  restrict_css = ".entry-content" }
+
+[feed.schneidersladen]
+start_url = "https://schneidersladen.de/en/new-stuff/"
+link_extractor = { restrict_css = ".listing" }
+article_extractor = { min_text_length = 50, negative_keywords = [ "cookie", "column" ] }
+
+[feed.amperka]
+start_url = "https://amperka.ru/collection/new"
+link_extractor = { allow = "/product/", restrict_css = ".products" }
+
+[feed.easyelectronics]
+start_url = "http://easyelectronics.ru/"
+link_extractor = { restrict_css = ".entry-title" }

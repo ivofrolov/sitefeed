@@ -2,6 +2,7 @@ import argparse
 import os
 import tomllib
 import urllib.parse
+from pathlib import Path
 from typing import NotRequired, TypedDict, cast
 
 from scrapy.crawler import Crawler, CrawlerProcess
@@ -17,7 +18,6 @@ from sitefeed.spiders import (
 
 class FeedSettings(TypedDict):
     start_url: str
-    output: str
     link_extractor: NotRequired[LinkExtractorOptions]
     article_extractor: NotRequired[ArticleExtractorOptions]
 
@@ -29,12 +29,13 @@ class LocalSettings(TypedDict, total=False):
 def derive_feed_settings(
     *,
     feed: str,
+    output: Path,
     feed_settings: FeedSettings,
     default_settings: Settings,
 ) -> Settings:
     settings = default_settings.copy()
     feeds = {
-        feed_settings["output"]: {
+        output.joinpath(feed).with_suffix(".xml"): {
             "format": "atom",
             "encoding": "utf8",
             "overwrite": True,
@@ -62,6 +63,14 @@ def crawl():
         help="configuration file path",
     )
     parser.add_argument(
+        "-o",
+        "--output",
+        type=Path,
+        required=True,
+        metavar="DIR",
+        help="feeds output directory",
+    )
+    parser.add_argument(
         "-v",
         "--verbose",
         action="count",
@@ -85,6 +94,7 @@ def crawl():
             ArticlesSpider,
             settings=derive_feed_settings(
                 feed=feed,
+                output=args.output,
                 feed_settings=feed_settings,
                 default_settings=default_settings,
             ),
