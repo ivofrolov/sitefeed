@@ -6,14 +6,13 @@
 #
 attrs==24.2.0
     # via
-    #   automat
     #   service-identity
     #   twisted
-automat==22.10.0
+automat==24.8.1
     # via twisted
-certifi==2024.7.4
+certifi==2024.8.30
     # via requests
-cffi==1.17.0
+cffi==1.17.1
     # via cryptography
 chardet==5.2.0
     # via readability-lxml
@@ -21,7 +20,7 @@ charset-normalizer==3.3.2
     # via requests
 constantly==23.10.4
     # via twisted
-cryptography==43.0.0
+cryptography==43.0.1
     # via
     #   pyopenssl
     #   scrapy
@@ -33,11 +32,11 @@ cssselect==1.2.0
     #   scrapy
 defusedxml==0.7.1
     # via scrapy
-filelock==3.15.4
+filelock==3.16.0
     # via tldextract
 hyperlink==21.0.0
     # via twisted
-idna==3.7
+idna==3.9
     # via
     #   hyperlink
     #   requests
@@ -60,7 +59,7 @@ lxml==5.3.0
     #   parsel
     #   readability-lxml
     #   scrapy
-lxml-html-clean==0.2.0
+lxml-html-clean==0.2.2
     # via sitefeed (pyproject.toml)
 packaging==24.1
     # via
@@ -72,11 +71,11 @@ parsel==1.9.1
     #   scrapy
 protego==0.3.1
     # via scrapy
-pyasn1==0.6.0
+pyasn1==0.6.1
     # via
     #   pyasn1-modules
     #   service-identity
-pyasn1-modules==0.4.0
+pyasn1-modules==0.4.1
     # via service-identity
 pycparser==2.22
     # via cffi
@@ -98,22 +97,20 @@ scrapy==2.11.2
     # via sitefeed (pyproject.toml)
 service-identity==24.1.0
     # via scrapy
-six==1.16.0
-    # via automat
 tldextract==5.1.2
     # via scrapy
 twisted==24.7.0
     # via scrapy
 typing-extensions==4.12.2
     # via twisted
-urllib3==2.2.2
+urllib3==2.2.3
     # via requests
 w3lib==2.2.1
     # via
     #   itemloaders
     #   parsel
     #   scrapy
-zope-interface==7.0.1
+zope-interface==7.0.3
     # via
     #   scrapy
     #   twisted
