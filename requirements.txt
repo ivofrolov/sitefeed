@@ -8,19 +8,19 @@ attrs==25.3.0
     # via
     #   service-identity
     #   twisted
-automat==24.8.1
+automat==25.4.16
     # via twisted
-certifi==2025.1.31
+certifi==2025.4.26
     # via requests
 cffi==1.17.1
     # via cryptography
 chardet==5.2.0
     # via readability-lxml
-charset-normalizer==3.4.1
+charset-normalizer==3.4.2
     # via requests
 constantly==23.10.4
     # via twisted
-cryptography==44.0.2
+cryptography==44.0.3
     # via
     #   pyopenssl
     #   scrapy
@@ -53,7 +53,7 @@ jmespath==1.0.1
     # via
     #   itemloaders
     #   parsel
-lxml==5.3.2
+lxml==5.4.0
     # via
     #   lxml-html-clean
     #   parsel
@@ -63,7 +63,7 @@ lxml-html-clean==0.4.2
     # via
     #   lxml
     #   sitefeed (pyproject.toml)
-packaging==24.2
+packaging==25.0
     # via
     #   parsel
     #   scrapy
@@ -99,7 +99,7 @@ scrapy==2.12.0
     # via sitefeed (pyproject.toml)
 service-identity==24.2.0
     # via scrapy
-tldextract==5.2.0
+tldextract==5.3.0
     # via scrapy
 twisted==24.11.0
     # via scrapy
