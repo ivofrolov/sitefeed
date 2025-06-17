@@ -10,7 +10,7 @@ attrs==25.3.0
     #   twisted
 automat==25.4.16
     # via twisted
-certifi==2025.4.26
+certifi==2025.6.15
     # via requests
 cffi==1.17.1
     # via cryptography
@@ -20,7 +20,7 @@ charset-normalizer==3.4.2
     # via requests
 constantly==23.10.4
     # via twisted
-cryptography==44.0.3
+cryptography==45.0.4
     # via
     #   pyopenssl
     #   scrapy
@@ -83,27 +83,27 @@ pycparser==2.22
     # via cffi
 pydispatcher==2.0.7
     # via scrapy
-pyopenssl==25.0.0
+pyopenssl==25.1.0
     # via scrapy
 queuelib==1.8.0
     # via scrapy
 readability-lxml @ git+https://github.com/buriy/python-readability.git
     # via sitefeed (pyproject.toml)
-requests==2.32.3
+requests==2.32.4
     # via
     #   requests-file
     #   tldextract
 requests-file==2.1.0
     # via tldextract
-scrapy==2.12.0
+scrapy==2.13.2
     # via sitefeed (pyproject.toml)
 service-identity==24.2.0
     # via scrapy
 tldextract==5.3.0
     # via scrapy
-twisted==24.11.0
+twisted==25.5.0
     # via scrapy
-typing-extensions==4.13.2
+typing-extensions==4.14.0
     # via twisted
 urllib3==2.4.0
     # via requests
