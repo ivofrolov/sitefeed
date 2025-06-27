@@ -71,7 +71,7 @@ parsel==1.10.0
     # via
     #   itemloaders
     #   scrapy
-protego==0.4.0
+protego==0.5.0
     # via scrapy
 pyasn1==0.6.1
     # via
@@ -105,7 +105,7 @@ twisted==25.5.0
     # via scrapy
 typing-extensions==4.14.0
     # via twisted
-urllib3==2.4.0
+urllib3==2.5.0
     # via requests
 w3lib==2.3.1
     # via
