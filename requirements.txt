@@ -10,7 +10,7 @@ attrs==25.4.0
     #   twisted
 automat==25.4.16
     # via twisted
-certifi==2025.10.5
+certifi==2025.11.12
     # via requests
 cffi==2.0.0
     # via cryptography
@@ -93,9 +93,9 @@ requests==2.32.5
     # via
     #   requests-file
     #   tldextract
-requests-file==3.0.0
+requests-file==3.0.1
     # via tldextract
-scrapy==2.13.3
+scrapy==2.13.4
     # via sitefeed (pyproject.toml)
 service-identity==24.2.0
     # via scrapy
@@ -111,7 +111,7 @@ w3lib==2.3.1
     # via
     #   parsel
     #   scrapy
-zope-interface==8.0.1
+zope-interface==8.1.1
     # via
     #   scrapy
     #   twisted
