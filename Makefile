@@ -10,7 +10,7 @@ format:
 .PHONY: lint
 lint:
 	ruff check --output-format pylint $(src)/$(package)
-	pyright $(src)/$(package)
+	ty check --output-format concise --color never --no-progress $(src)/$(package)
 
 .PHONY: ensure-pip-tools
 ensure-pip-tools:

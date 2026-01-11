@@ -20,8 +20,8 @@ link_extractor = {
     restrict_css = ".links",           # css selector of a region links should be extracted from (not required)
 }
 article_extractor = {
-    min_text_length = 25,              # higher value leads to more precise detection of longer texts (not required)
-    negative_keywords = ["footer"],    # patterns in classes and ids that decrease content candidates score (not required)
+    title_css = "title"                # css selector for element where title is (default is <title> tag)
+    content_css = "article"            # css selector for element with content (default is <article> tag)
 }
 output = "example.xml"                 # path to store feed
 

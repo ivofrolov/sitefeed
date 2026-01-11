@@ -82,7 +82,7 @@ def crawl():
     os.environ["SCRAPY_SETTINGS_MODULE"] = "sitefeed.settings"
     default_settings: Settings = get_project_settings()
 
-    loglevel = ("ERROR", "INFO", "DEBUG")[min(args.verbose, 2) % 3]
+    loglevel = ("ERROR", "INFO", "DEBUG")[min(args.verbose, 2)]
     default_settings.set("LOG_LEVEL", loglevel, priority="cmdline")
 
     process = CrawlerProcess(settings=default_settings)
@@ -100,7 +100,7 @@ def crawl():
             ),
             init_reactor=init_reactor,
         )
-        init_reactor = False
+        init_reactor = False  # start reactor only once
         process.crawl(
             crawler,
             start_url=feed_settings["start_url"],

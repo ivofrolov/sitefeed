@@ -1,11 +1,10 @@
 [project]
 name = "sitefeed"
-version = "1.0"
-requires-python = ">=3.11"
+version = "2.0"
+requires-python = ">=3.12"
 dependencies = [
-  "scrapy~=2.11",
-  "readability-lxml@git+https://github.com/buriy/python-readability.git",
-  "lxml_html_clean~=0.2", # via readability-lxml
+  "scrapy~=2.14",
+  "lxml_html_clean~=0.4",
 ]
 
 [project.scripts]

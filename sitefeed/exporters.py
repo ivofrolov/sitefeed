@@ -61,12 +61,12 @@ class AtomArticleExporter(BaseItemExporter):
 
         self._newline_and_indent(depth=2)
         self.xg.startElement("title", {})
-        self.xg.characters(item["title"])
+        self.xg.characters(item.get("title", ""))
         self.xg.endElement("title")
 
         self._newline_and_indent(depth=2)
         self.xg.startElement("content", {"type": "html"})
-        self.xg.characters(item["content"])
+        self.xg.characters(item.get("content", ""))
         self.xg.endElement("content")
 
         self._newline_and_indent(depth=2)

@@ -1,6 +1,6 @@
 from typing import Any, TypedDict
 
-from scrapy.http import Response
+from scrapy.http import TextResponse
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from w3lib.url import parse_url
@@ -14,8 +14,8 @@ class LinkExtractorOptions(TypedDict, total=False):
 
 
 class ArticleExtractorOptions(TypedDict, total=False):
-    min_text_length: int
-    negative_keywords: list[str]
+    content_css: str
+    title_css: str
 
 
 class ArticlesSpider(CrawlSpider):
@@ -55,5 +55,5 @@ class ArticlesSpider(CrawlSpider):
 
         super().__init__(*args, **kwargs)
 
-    def parse(self, response: Response) -> Article:
+    def parse(self, response: TextResponse) -> Article:
         return self.article_extractor.load_item(response)
