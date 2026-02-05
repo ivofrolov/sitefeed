@@ -17,3 +17,8 @@ article_extractor = { title_css = ".product-detail-header h1", content_css = ".p
 start_url = "https://www.thonk.co.uk/"
 link_extractor = { allow = "/shop/",  restrict_css = ".product_tag-new-products" }
 article_extractor = { title_css = ".product_title", content_css = "#tab-description" }
+
+[feed.m5stack]
+start_url = "https://shop.m5stack.com/"
+link_extractor = { allow = "/products/",  restrict_css = ".product-card" }
+article_extractor = { title_css = "[itemprop=name]", content_css = "[itemprop=description]" }
