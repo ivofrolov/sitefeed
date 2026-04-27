@@ -3,11 +3,6 @@ start_url = "https://amperka.ru/collection/new"
 link_extractor = { allow = "/product/", restrict_css = ".products" }
 article_extractor = { title_css = ".product-detail__title", content_css = ".product-detail__description" }
 
-[feed.chipdip]
-start_url = "https://www.chipdip.ru/news"
-link_extractor = { restrict_css = ".newslist .link" }
-article_extractor = { title_css = ".main-header", content_css = ".newscontent" }
-
 [feed.easyelectronics]
 start_url = "http://easyelectronics.ru/"
 link_extractor = { restrict_css = ".entry-title" }
