@@ -3,7 +3,7 @@ name = "sitefeed"
 version = "2.0"
 requires-python = ">=3.12"
 dependencies = [
-  "scrapy~=2.14",
+  "scrapy~=2.15",
   "lxml_html_clean~=0.4",
 ]
 
