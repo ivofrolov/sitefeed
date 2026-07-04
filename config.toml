@@ -15,7 +15,7 @@ article_extractor = { title_css = "[itemprop=name]", content_css = "[itemprop=de
 
 [feed.schneidersladen]
 start_url = "https://schneidersladen.de/en/new-stuff/"
-link_extractor = { restrict_css = ".cms-element-product-listing .cms-listing-row" }
+link_extractor = { restrict_css = ".cms-element-product-listing .cms-listing-row .product-info" }
 article_extractor = { title_css = ".product-detail-header h1", content_css = ".product-detail-description" }
 
 [feed.thonk]
