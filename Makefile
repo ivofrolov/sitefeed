@@ -12,14 +12,6 @@ lint:
 	ruff check --output-format pylint $(src)/$(package)
 	ty check --output-format concise --color never --no-progress $(src)/$(package)
 
-.PHONY: ensure-pip-tools
-ensure-pip-tools:
-	@which pip-compile > /dev/null || python -m pip install pip-tools -q
-
-.PHONY: requirements
-requirements: ensure-pip-tools
-	pip-compile -q --strip-extras --upgrade -o requirements.txt pyproject.toml
-
 .PHONY: install
-install: ensure-pip-tools
-	pip-sync
+install:
+	pip install --upgrade --upgrade-strategy=eager -e .
