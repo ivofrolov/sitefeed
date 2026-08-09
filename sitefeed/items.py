@@ -1,8 +1,9 @@
 import re
+from typing import cast
 
 from itemloaders.processors import MapCompose, TakeFirst
 from lxml_html_clean import Cleaner
-from scrapy.http import TextResponse
+from scrapy.http import Response, TextResponse
 from scrapy.item import Field, Item
 from scrapy.loader import ItemLoader
 from w3lib.html import remove_tags
@@ -35,8 +36,8 @@ class ArticleExtractor:
         self.title_css = title_css
         self.content_css = content_css
 
-    def load_item(self, response: TextResponse) -> Article:
-        loader = ArticleLoader(response=response)
+    def load_item(self, response: Response) -> Article:
+        loader = ArticleLoader(response=cast(TextResponse, response))
         loader.add_css(
             "title",
             self.title_css,

@@ -1,9 +1,9 @@
 from datetime import datetime, timezone
+from typing import Any
 from xml.sax.saxutils import XMLGenerator
 
+from itemadapter import ItemAdapter
 from scrapy.exporters import BaseItemExporter
-
-from sitefeed.spiders import Article
 
 
 class AtomArticleExporter(BaseItemExporter):
@@ -16,10 +16,11 @@ class AtomArticleExporter(BaseItemExporter):
         id_: str = "http://example.com/",
         **kwargs,
     ):
+        kwargs["fields_to_export"] = ("content", "title", "url")
+        kwargs.setdefault("encoding", "utf-8")
         super().__init__(**kwargs)
 
-        if not self.encoding:
-            self.encoding = "utf-8"
+        assert self.encoding is not None
         self.xg = XMLGenerator(file, encoding=self.encoding)
 
         self.title = title
@@ -55,7 +56,9 @@ class AtomArticleExporter(BaseItemExporter):
         self.xg.characters(self.id_)
         self.xg.endElement("id")
 
-    def export_item(self, item: Article):
+    def export_item(self, item: Any):
+        item = ItemAdapter(item)
+
         self._newline_and_indent(depth=1)
         self.xg.startElement("entry", {})
 

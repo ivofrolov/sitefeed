@@ -26,28 +26,26 @@ class LocalSettings(TypedDict, total=False):
     feed: dict[str, FeedSettings]
 
 
-def derive_feed_settings(
+def update_feed_settings(
+    crawler: Crawler,
     *,
-    feed: str,
-    output: Path,
-    feed_settings: FeedSettings,
-    default_settings: Settings,
-) -> Settings:
-    settings = default_settings.copy()
+    name: str,
+    output_dir: Path,
+    settings: FeedSettings,
+) -> None:
     feeds = {
-        output.joinpath(feed).with_suffix(".xml"): {
+        output_dir.joinpath(name).with_suffix(".xml"): {
             "format": "atom",
-            "encoding": "utf8",
+            "encoding": "utf-8",
             "overwrite": True,
             "item_export_kwargs": {
-                "title": feed.title(),
-                "link": feed_settings["start_url"],
-                "id_": urllib.parse.urljoin(feed_settings["start_url"], "/"),
+                "title": name.title(),
+                "link": settings["start_url"],
+                "id_": urllib.parse.urljoin(settings["start_url"], "/"),
             },
         }
     }
-    settings.set("FEEDS", feeds, priority="spider")
-    return settings
+    crawler.settings.set("FEEDS", feeds, priority="spider")
 
 
 def crawl():
@@ -82,25 +80,20 @@ def crawl():
     os.environ["SCRAPY_SETTINGS_MODULE"] = "sitefeed.settings"
     default_settings: Settings = get_project_settings()
 
-    loglevel = ("ERROR", "INFO", "DEBUG")[min(args.verbose, 2)]
+    loglevel = ("ERROR", "WARNING", "INFO", "DEBUG")[min(args.verbose, 3)]
     default_settings.set("LOG_LEVEL", loglevel, priority="cmdline")
 
     process = CrawlerProcess(settings=default_settings)
 
     local_settings = cast(LocalSettings, tomllib.load(args.config))
-    init_reactor = True
     for feed, feed_settings in local_settings.get("feed", dict()).items():
-        crawler = Crawler(
-            ArticlesSpider,
-            settings=derive_feed_settings(
-                feed=feed,
-                output=args.output,
-                feed_settings=feed_settings,
-                default_settings=default_settings,
-            ),
-            init_reactor=init_reactor,
+        crawler = process.create_crawler(ArticlesSpider)
+        update_feed_settings(
+            crawler,
+            name=feed,
+            output_dir=args.output,
+            settings=feed_settings,
         )
-        init_reactor = False  # start reactor only once
         process.crawl(
             crawler,
             start_url=feed_settings["start_url"],
