@@ -5,6 +5,10 @@ BOT_NAME = "sitefeed"
 SPIDER_MODULES = ["sitefeed.spiders"]
 NEWSPIDER_MODULE = "sitefeed.spiders"
 
+# Enable or disable addons
+# See https://docs.scrapy.org/en/latest/topics/addons.html
+# ADDONS = {
+# }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = "sitefeed (+https://github.com/ivofrolov/sitefeed)"
@@ -14,20 +18,21 @@ ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS_PER_DOMAIN = 1
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 # DOWNLOAD_DELAY = 3
-# The download delay setting will honor only one of:
-# CONCURRENT_REQUESTS_PER_DOMAIN = 16
-# CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
 # COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 TELNETCONSOLE_ENABLED = False
+
+# Disable Remote Control (enabled by default)
+REMOTE_CONTROL_ENABLED = False
 
 # Override the default request headers:
 # DEFAULT_REQUEST_HEADERS = {
@@ -70,7 +75,7 @@ AUTOTHROTTLE_ENABLED = True
 # AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
-AUTOTHROTTLE_TARGET_CONCURRENCY = 4.0
+AUTOTHROTTLE_TARGET_CONCURRENCY = 0.8
 # Enable showing throttling stats for every response received:
 # AUTOTHROTTLE_DEBUG = False
 
@@ -81,8 +86,3 @@ AUTOTHROTTLE_TARGET_CONCURRENCY = 4.0
 # HTTPCACHE_DIR = "httpcache"
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
-
-# Set settings whose default value is deprecated to a future-proof value
-REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
-TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
-FEED_EXPORT_ENCODING = "utf-8"
